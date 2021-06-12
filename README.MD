@@ -12,6 +12,8 @@ This repo is the vision system of Robomaster 2021 season developed by UoN-lancet
 
 ## ![RobomasterVisionSystem](static/RobomasterVisionSystem.svg)
 
+![RobomasterVisionSystem](static/PowerRune.svg)
+
 ## File Structure
 
 ```
@@ -52,13 +54,29 @@ RobomasterVisionSystem
 └── README.MD
 ```
 
-## Requirements and enviroment
+## Requirements and environment
 
-| Tested Hardware                                       | OS                                                           | Env & Tools                                                  |
-| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Intel NUC i3 <br>Intel NUC i7 <br>Xiaomi Cheap Camera | Develop: Manjaro Linux 21.0.5<br>Testing: Ubuntu 20.04 LTS<br>Deploy: Debian Linux 10.0 | linux kernel >= 4.9<br>CMake >= 3.10<br>gcc 9.x/10.x<br>OpenCV >= 4.2<br>Dotnet == 5.0<br>NCNN<br>VulkanSDK >= 1.2<br>Pytorch >= 1.7 (train model) |
+| Tested Hardware                    | OS                                                           | Env & Tools                                                  |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Intel NUC i3 <br>Intel NUC i7 <br> | Develop: Manjaro Linux 21.0.5<br>Testing: Ubuntu 20.04 LTS<br>Deploy: Debian Linux 10.0 | linux kernel >= 4.9<br>CMake >= 3.10<br>gcc 9.x/10.x<br>OpenCV >= 4.2<br>Dotnet == 5.0<br>NCNN<br>VulkanSDK >= 1.2<br>Pytorch >= 1.7 (train model) |
 
-#### OpenCV
+## Network performance analysis
+
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title></head>
+<body><figure><table>
+<thead>
+<tr><th>Model</th><th>Model Size</th><th>Framework</th><th>Dataset</th><th>mAP</th><th>FPS (GTX1080Ti)</th><th>FPS (Intel i7)</th></tr></thead>
+<tbody><tr><td>Yolo v4</td><td>640</td><td>Darknet</td><td>Roco 1080</td><td>24.6</td><td>40 - 60</td><td>0.5 - 0.7</td></tr><tr><td>Yolo v4 tiny</td><td>640</td><td>Darknet</td><td>Roco 1080</td><td>22.8</td><td>80 - 120</td><td>3 - 7</td></tr><tr><td>Nanodet</td><td>720</td><td>Pytorch NCNN</td><td>Roco 1080</td><td>21.3</td><td>110 - 140</td><td>12 - 18</td></tr><tr><td>Nanodet</td><td>720</td><td>Pytorch NCNN</td><td>Roco 1080<br>Roco 720</td><td>21.5</td><td>110 - 140</td><td>12 - 18</td></tr><tr><td>Nanodet</td><td>480</td><td>Pytorch NCNN</td><td>Roco 1080<br>Roco 720</td><td>20.4</td><td>130+</td><td>18 - 25</td></tr></tbody>
+</table></figure>
+<p>&nbsp;</p >
+</body>
+</html>
+
+## OpenCV
 
 ```
 root@debian~# apt install cmake gcc opencv-dev libopencv
@@ -237,63 +255,3 @@ Result: 18 - 20 fps
 
 ​		Transfer coco xml format label to pascal format label
 
-## Update Logs
-
-#### Nov 2020
-
-```
-Model: Yolo v4 [640x640]
-Framework: Darknet https://github.com/pjreddie/darknet
-Dataset: Roco 1920x1080
-mAP: 24.6
-FPS: 
-  GTX1080Ti: 40 - 60
-  Intel NUC: 0.5 - 0.7
-```
-
-#### Dec 2020
-```
-Model: Yolo v4 (tiny)  [640x640]
-Framework: Darknet https://github.com/pjreddie/darknet
-Dataset: Roco 1920x1080
-mAP: 22.8
-FPS: 
-  GTX1080Ti: 80 - 120
-  Intel NUC: 3 - 7
-```
-
-#### Feb 2021 week 2
-
-```
-Model: Nanodet [720x720]
-Framework: Pytorch + NCNN
-Dataset: Roco 1920x1080
-mAP: 21.3
-FPS: 
-  GTX1080Ti: 130+
-  Intel NUC: 12 - 18
-```
-
-#### Feb 2021 week 3
-
-```
-Model: Nanodet [720x720]
-Framework: Pytorch + NCNN
-Dataset: Roco 1920x1080 + Roco 720x720
-mAP: 21.5
-FPS: 
-  GTX1080Ti: 130+
-  Intel NUC: 12 - 18
-```
-
-#### April 2021
-
-```
-Model: Nanodet [480x480]
-Framework: Pytorch + NCNN
-Dataset: Roco 1920x1080 + Roco 720x720
-mAP: 20.5
-FPS: 
-  GTX1080Ti: 130+
-  Intel NUC: 18 - 25
-```
