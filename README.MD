@@ -58,7 +58,7 @@ RobomasterVisionSystem
 
 | Tested Hardware                    | OS                                                           | Env & Tools                                                  |
 | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Intel NUC i3 <br>Intel NUC i7 <br> | Develop: Manjaro Linux 21.0.5<br>Testing: Ubuntu 20.04 LTS<br>Deploy: Debian Linux 10.0 | linux kernel >= 4.9<br>CMake >= 3.10<br>gcc 9.x/10.x<br>OpenCV >= 4.2<br>Dotnet == 5.0<br>NCNN<br>VulkanSDK >= 1.2<br>Pytorch >= 1.7 (train model) |
+| Intel NUC i7 <br> | Develop: Manjaro Linux 21.0.5<br>Testing: Ubuntu 20.04 LTS<br>Deploy: Debian Linux 10.0 | linux kernel >= 4.9<br>CMake >= 3.10<br>gcc 9.x/10.x<br>OpenCV >= 4.2<br>Dotnet == 5.0<br>NCNN<br>VulkanSDK >= 1.2<br>Pytorch >= 1.7 (train model) |
 
 ## Network performance analysis
 
